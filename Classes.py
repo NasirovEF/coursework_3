@@ -1,10 +1,13 @@
+from datetime import datetime
+
+
 class Operation:
 
-    def __init__(self, id, date, state, opAm, dscr, fr, to):
-        self.id = id
+    def __init__(self, id_op, date, state, op_am, dscr, fr, to):
+        self.id = id_op
         self.date = date
         self.state = state
-        self.opAm = opAm
+        self.op_am = op_am
         self.dscr = dscr
         self.fr = fr
         self.to = to
@@ -16,6 +19,21 @@ class Operation:
             return False
 
     def right_date(self):
-        self.rightdate = self.date.strip()
+        the_right_date = datetime.fromisoformat(self.date.replace("T", " "))
 
+        return f'{the_right_date.day}.{the_right_date.month}.{the_right_date.year}'
+
+    def hide_inform(self, deposit):
+        if "Счет" in deposit:
+            return f'Счет **{deposit[-4:]}'
+        else:
+            share = deposit.split()
+            name_card = []
+            card_numb = []
+            for i in share:
+                if i.isdigit():
+                    card_numb.append(i)
+                else:
+                    name_card.append(i)
+            return f'{" ".join(name_card)} {card_numb[0][-16:-12]} {card_numb[0][-16:-14]}** **** {card_numb[0][-4:]}'
 
