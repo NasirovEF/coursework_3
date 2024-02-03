@@ -13,17 +13,24 @@ class Operation:
         self.to = to
 
     def state_operation(self):
+        """Определяет статус операции, если операция выполнена
+        возвращает True"""
+
         if self.state == "EXECUTED":
             return True
         else:
             return False
 
     def right_date(self):
+        """Прописывает дату в формате ДД.ММ.ГГГГ"""
+
         the_right_date = datetime.fromisoformat(self.date.replace("T", " "))
 
         return f'{the_right_date.day}.{the_right_date.month}.{the_right_date.year}'
 
     def hide_inform(self, deposit):
+        """Маскирует номер карты и номер счета"""
+
         if "Счет" in deposit:
             return f'Счет **{deposit[-4:]}'
         else:
