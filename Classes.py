@@ -6,6 +6,7 @@ class Operation:
     def __init__(self, operation):
         self.operation = operation
 
+
     def state_operation(self):
         """Определяет статус операции, если операция выполнена
         возвращает True"""
@@ -33,8 +34,8 @@ class Operation:
     def hide_inform(self, deposit):
         """Маскирует номер карты и номер счета"""
 
-        self.fr = self.operation["from"]
-        self.to = self.operation["to"]
+        # self.fr = self.operation["from"]
+        # self.to = self.operation["to"]
         if "Счет" in deposit:
             return f'Счет **{deposit[-4:]}'
         elif len(deposit) == 0:
@@ -50,6 +51,10 @@ class Operation:
                     name_card.append(i)
             return f'{" ".join(name_card)} {card_numb[0][-16:-12]} {card_numb[0][-16:-14]}** **** {card_numb[0][-4:]}'
 
+    def transfer_message(self):
+        return f"{self.hide_inform(self.operation["from"])} -> {self.hide_inform(self.operation["to"])}"
+
+
     def __str__(self):
-        return f"{self.right_date()} {self.operation["description"]}\n{self.hide_inform(self.operation["from"])} -> {self.hide_inform(self.operation["to"])}\n{self.transfer_amount()}"
+        return f"{self.right_date()} {self.operation["description"]}\n{self.transfer_message()}\n{self.transfer_amount()}"
 

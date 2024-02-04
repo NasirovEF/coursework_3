@@ -1,6 +1,7 @@
 import json
 from Classes import Operation
 
+
 def read_file(operations):
     """Читает Json файл и возвращает список"""
 
@@ -11,17 +12,11 @@ def read_file(operations):
 
 
 def list_oper(list_operations):
-    list = []
     for operation in list_operations:
-
-        return operation[0]
-
-
+        print(f"{Operation(operation)}\n")
 
 
 operations = 'operations.json'
 list_operations = read_file(operations)
 
-
-
-print(list_oper(list_operations))
+list_oper(list_operations)
