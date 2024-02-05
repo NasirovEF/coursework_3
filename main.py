@@ -3,6 +3,7 @@ from Classes import Operation
 
 operations = "operations.json"
 
+
 def main():
     """Функция выводит 5 последних успешно выполненных
     операций отсортированных по дате"""
@@ -12,4 +13,6 @@ def main():
         massage = Operation(operation)
         print(massage)
 
-main()
+
+if __name__ == "__main__":
+    main()
