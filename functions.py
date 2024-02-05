@@ -1,5 +1,4 @@
 import json
-from Classes import Operation
 
 
 def read_file(operations):
@@ -26,9 +25,5 @@ def sorted_list(list_time_state):
     """ Сортирует полученный список по дате
      и выводит первые 5 элементов"""
 
-    sorted_list = sorted(list_time_state, key=lambda list_time_state: list_time_state.get("date"), reverse=True)
-    return sorted_list[:5]
-
-
-
-
+    sort_list = sorted(list_time_state, key=lambda list_time_state: list_time_state.get("date"), reverse=True)
+    return sort_list[:5]
