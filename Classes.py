@@ -34,8 +34,6 @@ class Operation:
     def hide_inform(self, deposit):
         """Маскирует номер карты и номер счета"""
 
-        # self.fr = self.operation["from"]
-        # self.to = self.operation["to"]
         if "Счет" in deposit:
             return f'Счет **{deposit[-4:]}'
         elif len(deposit) == 0:
@@ -52,7 +50,13 @@ class Operation:
             return f'{" ".join(name_card)} {card_numb[0][-16:-12]} {card_numb[0][-16:-14]}** **** {card_numb[0][-4:]}'
 
     def transfer_message(self):
-        return f"{self.hide_inform(self.operation["from"])} -> {self.hide_inform(self.operation["to"])}"
+        """Формирует информацию откуда и на какой
+        счет был перевод"""
+
+        if self.operation.get("from"):
+            return f"{self.hide_inform(self.operation["from"])} -> {self.hide_inform(self.operation["to"])}"
+        else:
+            return self.hide_inform(self.operation["to"])
 
 
     def __str__(self):
