@@ -60,5 +60,5 @@ class Operation:
 
 
     def __str__(self):
-        return f"{self.right_date()} {self.operation["description"]}\n{self.transfer_message()}\n{self.transfer_amount()}"
+        return f"{self.right_date()} {self.operation["description"]}\n{self.transfer_message()}\n{self.transfer_amount()}\n"
 
