@@ -35,7 +35,7 @@ class Operation:
                     card_numb.append(i)
                 else:
                     name_card.append(i)
-            return f'{" ".join(name_card)} {card_numb[0][-16:-12]} {card_numb[0][-16:-14]}** **** {card_numb[0][-4:]}'
+            return f'{" ".join(name_card)} {card_numb[0][-16:-12]} {card_numb[0][-12:-10]}** **** {card_numb[0][-4:]}'
 
     def transfer_message(self):
         """Формирует информацию откуда и на какой
